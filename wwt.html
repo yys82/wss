@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>虚空回响 - 2025</title>
+    <title>虚空回响 - 2025 | 多维度探索</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* 基础样式 */
         * {
             margin: 0;
             padding: 0;
@@ -14,14 +15,15 @@
         
         :root {
             --dark-bg: linear-gradient(135deg, #0a0a0a 0%, #12082e 50%, #0a0a0a 100%);
+            --mobile-bg: radial-gradient(circle at top, #1a0a3a, #0a0a0a);
             --gold: #d4af37;
             --dark-red: #8a0303;
             --purple: #5e2a84;
             --teal: #2a7a62;
             --text-light: #c7c7d1;
             --text-accent: #a89cc8;
-            --card-bg: rgba(10, 8, 24, 0.7);
-            --mobile-bg: radial-gradient(circle at top, #12082e, #0a0a0a);
+            --card-bg: rgba(10, 8, 24, 0.85);
+            --nav-bg: rgba(5, 3, 15, 0.95);
         }
         
         body {
@@ -32,6 +34,18 @@
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
+        }
+        
+        /* 移动设备背景 */
+        .mobile-background {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: var(--mobile-bg);
         }
         
         /* 背景装饰元素 */
@@ -48,7 +62,7 @@
         
         .element {
             position: absolute;
-            opacity: 0.1;
+            opacity: 0.08;
             animation: float 15s infinite linear;
         }
         
@@ -104,302 +118,119 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 15px;
         }
         
-        /* 移动设备专用样式 */
-        @media (max-width: 768px) {
-            body {
-                background: var(--mobile-bg);
-            }
-            
-            .logo {
-                font-size: 2.8rem;
-                letter-spacing: 4px;
-                margin-bottom: 10px;
-            }
-            
-            .subtitle {
-                font-size: 1.1rem;
-                margin-top: 0;
-            }
-            
-            /* 移动端导航 - 汉堡菜单 */
-            .nav-container {
-                margin-top: 20px;
-                position: relative;
-            }
-            
-            .hamburger {
-                display: block;
-                position: absolute;
-                top: 0;
-                right: 0;
-                background: rgba(20, 15, 40, 0.7);
-                border: 1px solid rgba(138, 3, 3, 0.3);
-                border-radius: 4px;
-                padding: 10px;
-                color: var(--gold);
-                cursor: pointer;
-                z-index: 100;
-            }
-            
-            nav ul {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                right: 0;
-                background: rgba(10, 8, 24, 0.9);
-                border: 1px solid rgba(138, 3, 3, 0.3);
-                border-radius: 8px;
-                padding: 10px;
-                width: 200px;
-                z-index: 99;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-            }
-            
-            nav ul.show {
-                display: flex;
-            }
-            
-            nav a {
-                width: 100%;
-                margin-bottom: 5px;
-                text-align: center;
-            }
-            
-            /* 主内容区 */
-            .main-content {
-                grid-template-columns: 1fr;
-                gap: 20px;
-                margin-bottom: 40px;
-            }
-            
-            .card {
-                padding: 20px;
-            }
-            
-            .card h2 {
-                font-size: 1.5rem;
-            }
-            
-            .symbol-grid {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 10px;
-            }
-            
-            .symbol {
-                width: 65px;
-                height: 65px;
-                font-size: 1.6rem;
-            }
-            
-            /* 时间线移动优化 */
-            .timeline-section {
-                margin: 40px 0;
-            }
-            
-            .section-title {
-                font-size: 1.8rem;
-                margin-bottom: 30px;
-            }
-            
-            .timeline:before {
-                left: 20px;
-            }
-            
-            .timeline-item {
-                width: 100%;
-                padding-left: 50px;
-                padding-right: 0;
-                text-align: left;
-                margin-bottom: 30px;
-            }
-            
-            .timeline-item:nth-child(odd),
-            .timeline-item:nth-child(even) {
-                left: 0;
-                padding-right: 0;
-            }
-            
-            .timeline-item:nth-child(odd) .timeline-content:before,
-            .timeline-item:nth-child(even) .timeline-content:before {
-                left: 8px;
-                width: 14px;
-                height: 14px;
-            }
-            
-            .timeline-content {
-                padding: 15px;
-            }
-            
-            .timeline-content h3 {
-                font-size: 1.2rem;
-            }
-            
-            /* 页脚 */
-            footer {
-                padding: 20px 0;
-                margin-top: 40px;
-            }
-            
-            .social-links {
-                gap: 15px;
-            }
-            
-            .social-links a {
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
-            }
-        }
-        
-        /* 平板设备专用样式 */
-        @media (min-width: 769px) and (max-width: 1024px) {
-            .logo {
-                font-size: 3.5rem;
-                letter-spacing: 6px;
-            }
-            
-            .subtitle {
-                font-size: 1.3rem;
-            }
-            
-            nav ul {
-                gap: 12px;
-            }
-            
-            nav a {
-                font-size: 1rem;
-                padding: 8px 12px;
-            }
-            
-            .main-content {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-            
-            .card {
-                padding: 25px;
-            }
-            
-            .symbol-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-            
-            .symbol {
-                width: 75px;
-                height: 75px;
-            }
-            
-            .timeline:before {
-                left: 50%;
-            }
-            
-            .timeline-item {
-                width: 50%;
-            }
-        }
-        
-        /* 桌面样式 */
-        @media (min-width: 1025px) {
-            /* 桌面样式保持不变 */
-        }
-        
-        /* 通用样式 */
+        /* 头部样式 */
         header {
-            padding: 30px 0;
+            padding: 25px 0;
             text-align: center;
             position: relative;
             border-bottom: 1px solid rgba(138, 3, 3, 0.3);
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
         
         .logo {
             font-family: 'Georgia', serif;
-            font-size: 4rem;
+            font-size: 2.8rem;
             color: var(--gold);
             text-shadow: 0 0 10px rgba(212, 175, 55, 0.5), 
-                         0 0 20px rgba(138, 3, 3, 0.3),
-                         0 0 30px rgba(94, 42, 132, 0.2);
-            letter-spacing: 8px;
-            margin-bottom: 15px;
+                         0 0 15px rgba(138, 3, 3, 0.3);
+            letter-spacing: 4px;
+            margin-bottom: 10px;
             position: relative;
             display: inline-block;
-            animation: glow 3s infinite alternate;
         }
         
         .subtitle {
             font-family: 'Courier New', Courier, monospace;
-            font-size: 1.5rem;
+            font-size: 1.1rem;
             color: var(--text-accent);
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            margin-top: -5px;
         }
         
+        /* 移动端导航 - 汉堡菜单 */
         .nav-container {
-            margin-top: 25px;
+            margin-top: 20px;
             position: relative;
         }
         
         .hamburger {
-            display: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 0;
+            right: 15px;
+            background: rgba(20, 15, 40, 0.7);
+            border: 1px solid rgba(138, 3, 3, 0.3);
+            border-radius: 4px;
+            padding: 12px;
+            color: var(--gold);
+            cursor: pointer;
+            z-index: 100;
+            width: 50px;
+            height: 50px;
         }
         
         nav ul {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 100%;
+            right: 15px;
+            background: var(--nav-bg);
+            border: 1px solid rgba(138, 3, 3, 0.3);
+            border-radius: 8px;
+            padding: 10px 0;
+            width: 200px;
+            z-index: 99;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
+        }
+        
+        nav ul.show {
             display: flex;
-            justify-content: center;
+        }
+        
+        nav li {
             list-style: none;
-            gap: 15px;
-            flex-wrap: wrap;
+            margin: 5px 0;
         }
         
         nav a {
             color: var(--text-light);
             text-decoration: none;
-            font-size: 1.1rem;
+            font-size: 1rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            padding: 8px 15px;
-            position: relative;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(138, 3, 3, 0.3);
-            border-radius: 4px;
-            background: rgba(20, 15, 40, 0.3);
+            padding: 12px 20px;
             display: block;
+            transition: all 0.3s ease;
         }
         
         nav a:hover, nav a.active {
             color: var(--gold);
             background: rgba(138, 3, 3, 0.2);
-            border-color: var(--gold);
             text-shadow: 0 0 8px rgba(212, 175, 55, 0.7);
         }
         
+        /* 主内容区 */
         .main-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-bottom: 50px;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            margin-bottom: 40px;
         }
         
         .card {
             background: var(--card-bg);
             border: 1px solid rgba(138, 3, 3, 0.3);
-            border-radius: 8px;
-            padding: 30px;
+            border-radius: 10px;
+            padding: 25px;
             position: relative;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 25px rgba(138, 3, 3, 0.2), 
-                         0 0 25px rgba(94, 42, 132, 0.1);
         }
         
         .card:before {
@@ -415,15 +246,16 @@
         .card h2 {
             color: var(--gold);
             margin-bottom: 15px;
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             position: relative;
             display: inline-block;
+            padding-bottom: 8px;
         }
         
         .card h2:after {
             content: '';
             position: absolute;
-            bottom: -6px;
+            bottom: 0;
             left: 0;
             width: 50px;
             height: 2px;
@@ -431,28 +263,29 @@
         }
         
         .card p {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             color: var(--text-accent);
-            font-size: 1.1rem;
+            font-size: 1.05rem;
+            line-height: 1.7;
         }
         
         .symbol-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 15px;
-            margin-top: 25px;
+            margin-top: 20px;
         }
         
         .symbol {
-            width: 80px;
-            height: 80px;
+            width: 70px;
+            height: 70px;
             background: rgba(20, 15, 40, 0.7);
             border: 1px solid rgba(138, 3, 3, 0.3);
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
+            font-size: 1.8rem;
             color: var(--gold);
             transition: all 0.3s ease;
             position: relative;
@@ -467,25 +300,27 @@
             color: var(--dark-red);
         }
         
+        /* 时间线部分 */
         .timeline-section {
-            margin: 50px 0;
+            margin: 40px 0;
         }
         
         .section-title {
             text-align: center;
             color: var(--gold);
-            margin-bottom: 35px;
+            margin-bottom: 30px;
             position: relative;
-            font-size: 2.2rem;
+            font-size: 1.8rem;
+            padding-bottom: 15px;
         }
         
         .section-title:after {
             content: '';
             position: absolute;
-            bottom: -12px;
+            bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 100px;
+            width: 80px;
             height: 3px;
             background: linear-gradient(90deg, transparent, var(--dark-red), var(--purple), transparent);
         }
@@ -501,27 +336,15 @@
             position: absolute;
             top: 0;
             bottom: 0;
-            left: 50%;
+            left: 20px;
             width: 2px;
             background: linear-gradient(to bottom, transparent, var(--purple), var(--dark-red), transparent);
-            margin-left: -1px;
         }
         
         .timeline-item {
             position: relative;
-            margin-bottom: 40px;
-            width: 50%;
-        }
-        
-        .timeline-item:nth-child(odd) {
-            left: 0;
-            padding-right: 40px;
-            text-align: right;
-        }
-        
-        .timeline-item:nth-child(even) {
-            left: 50%;
-            padding-left: 40px;
+            margin-bottom: 30px;
+            padding-left: 50px;
         }
         
         .timeline-content {
@@ -536,6 +359,7 @@
             content: '';
             position: absolute;
             top: 20px;
+            left: -40px;
             width: 18px;
             height: 18px;
             background: var(--purple);
@@ -543,18 +367,17 @@
             border-radius: 50%;
         }
         
-        .timeline-item:nth-child(odd) .timeline-content:before {
-            right: -49px;
-        }
-        
-        .timeline-item:nth-child(even) .timeline-content:before {
-            left: -49px;
-        }
-        
         .timeline-content h3 {
             color: var(--gold);
-            margin-bottom: 8px;
-            font-size: 1.4rem;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+        
+        .timeline-content p {
+            margin-bottom: 15px;
+            color: var(--text-accent);
+            font-size: 1rem;
+            line-height: 1.6;
         }
         
         .reveal-btn {
@@ -562,12 +385,13 @@
             color: var(--gold);
             border: 1px solid var(--gold);
             border-radius: 4px;
-            padding: 8px 15px;
+            padding: 10px 18px;
             font-family: inherit;
             font-size: 0.95rem;
             cursor: pointer;
             margin-top: 10px;
             transition: all 0.3s ease;
+            display: inline-block;
         }
         
         .reveal-btn:hover {
@@ -575,40 +399,13 @@
             box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
         }
         
+        /* 页脚 - 已移除社交媒体按钮 */
         footer {
             background: rgba(5, 3, 15, 0.8);
             padding: 25px 0;
             text-align: center;
-            margin-top: 50px;
+            margin-top: 40px;
             border-top: 1px solid rgba(138, 3, 3, 0.3);
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 18px;
-            flex-wrap: wrap;
-        }
-        
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: rgba(20, 15, 40, 0.7);
-            color: var(--gold);
-            font-size: 1.4rem;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(138, 3, 3, 0.3);
-        }
-        
-        .social-links a:hover {
-            background: var(--dark-red);
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(138, 3, 3, 0.4);
         }
         
         .copyright {
@@ -616,6 +413,104 @@
             font-size: 0.95rem;
         }
         
+        /* 秘钥和门户部分样式 */
+        .key-section, .portal-section {
+            margin: 50px 0;
+            padding: 30px;
+            background: var(--card-bg);
+            border-radius: 10px;
+            border: 1px solid rgba(138, 3, 3, 0.3);
+            position: relative;
+        }
+        
+        .key-section:before, .portal-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--dark-red), var(--purple), var(--teal));
+        }
+        
+        .key-grid, .portal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 25px;
+        }
+        
+        .key-item, .portal-item {
+            background: rgba(15, 10, 30, 0.7);
+            border: 1px solid rgba(138, 3, 3, 0.2);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .key-item:hover, .portal-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            border-color: var(--gold);
+        }
+        
+        .key-icon, .portal-icon {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+        
+        .key-title, .portal-title {
+            color: var(--gold);
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        
+        .key-desc, .portal-desc {
+            color: var(--text-accent);
+            font-size: 0.95rem;
+        }
+        
+        .portal-grid {
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+        
+        .portal-item {
+            position: relative;
+            overflow: hidden;
+            min-height: 200px;
+        }
+        
+        .portal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(94, 42, 132, 0.3), rgba(138, 3, 3, 0.3));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .portal-item:hover .portal-overlay {
+            opacity: 1;
+        }
+        
+        .portal-overlay span {
+            color: white;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 4px;
+        }
+        
+        /* 模态框 */
         .modal {
             display: none;
             position: fixed;
@@ -623,17 +518,18 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.9);
             z-index: 1000;
             align-items: center;
             justify-content: center;
+            padding: 15px;
         }
         
         .modal-content {
             background: var(--card-bg);
             border: 2px solid var(--gold);
             border-radius: 10px;
-            width: 90%;
+            width: 100%;
             max-width: 500px;
             padding: 30px;
             position: relative;
@@ -648,6 +544,11 @@
             font-size: 1.8rem;
             cursor: pointer;
             transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .close-modal:hover {
@@ -659,14 +560,14 @@
             color: var(--gold);
             margin-bottom: 20px;
             text-align: center;
-            font-size: 1.8rem;
+            font-size: 1.6rem;
         }
         
         .modal p {
             color: var(--text-accent);
             margin-bottom: 20px;
-            line-height: 1.8;
-            font-size: 1.1rem;
+            line-height: 1.7;
+            font-size: 1.05rem;
         }
         
         .symbol-large {
@@ -675,8 +576,9 @@
             justify-content: center;
             font-size: 3.5rem;
             color: var(--gold);
-            margin: 20px 0;
+            margin: 25px 0;
             text-align: center;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
         }
         
         /* 动画效果 */
@@ -685,57 +587,159 @@
                 transform: translateY(0) rotate(0deg);
             }
             50% {
-                transform: translateY(-20px) rotate(180deg);
+                transform: translateY(-15px) rotate(180deg);
             }
             100% {
                 transform: translateY(0) rotate(360deg);
             }
         }
         
-        @keyframes glow {
-            0% {
-                text-shadow: 0 0 10px rgba(212, 175, 55, 0.5), 
-                             0 0 20px rgba(138, 3, 3, 0.3),
-                             0 0 30px rgba(94, 42, 132, 0.2);
+        /* 平板设备样式 */
+        @media (min-width: 768px) {
+            .container {
+                padding: 0 30px;
             }
-            100% {
-                text-shadow: 0 0 15px rgba(212, 175, 55, 0.8), 
-                             0 0 30px rgba(138, 3, 3, 0.5),
-                             0 0 45px rgba(94, 42, 132, 0.4),
-                             0 0 60px rgba(42, 122, 98, 0.3);
+            
+            header {
+                padding: 30px 0;
+            }
+            
+            .logo {
+                font-size: 3.5rem;
+                letter-spacing: 6px;
+            }
+            
+            .subtitle {
+                font-size: 1.3rem;
+            }
+            
+            .hamburger {
+                display: none;
+            }
+            
+            nav ul {
+                display: flex;
+                position: static;
+                flex-direction: row;
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                width: auto;
+                padding: 0;
+                justify-content: center;
+            }
+            
+            nav li {
+                margin: 0 5px;
+            }
+            
+            nav a {
+                padding: 10px 18px;
+                font-size: 1rem;
+                border-radius: 5px;
+            }
+            
+            .main-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+            
+            .symbol-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .timeline:before {
+                left: 50%;
+                margin-left: -1px;
+            }
+            
+            .timeline-item {
+                width: 50%;
+                padding-left: 0;
+            }
+            
+            .timeline-item:nth-child(odd) {
+                left: 0;
+                padding-right: 50px;
+                text-align: right;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 50%;
+                padding-left: 50px;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-content:before {
+                right: -40px;
+                left: auto;
+            }
+            
+            .timeline-item:nth-child(even) .timeline-content:before {
+                left: -40px;
             }
         }
         
-        /* 移动端设备检测提示 */
-        .device-warning {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(138, 3, 3, 0.8);
-            color: white;
-            padding: 10px;
-            text-align: center;
-            z-index: 1000;
-            font-size: 0.9rem;
+        /* 桌面样式 */
+        @media (min-width: 1024px) {
+            .logo {
+                font-size: 4rem;
+            }
+            
+            .subtitle {
+                font-size: 1.5rem;
+            }
+            
+            nav a {
+                padding: 12px 22px;
+                font-size: 1.1rem;
+            }
+            
+            .card {
+                padding: 30px;
+            }
+            
+            .card:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 12px 25px rgba(138, 3, 3, 0.2), 
+                            0 0 25px rgba(94, 42, 132, 0.1);
+            }
+            
+            .symbol {
+                width: 80px;
+                height: 80px;
+                font-size: 2rem;
+            }
+            
+            .key-grid, .portal-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
         }
         
-        /* 移动设备专用背景 */
-        .mobile-background {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2;
-            background: radial-gradient(circle at top, #1a0a3a, #0a0a0a);
-        }
-        
-        @media (max-width: 768px) {
+        /* 移动设备专用样式 */
+        @media (max-width: 767px) {
             .mobile-background {
                 display: block;
+            }
+            
+            .element {
+                opacity: 0.05;
+            }
+            
+            .symbol {
+                width: 65px;
+                height: 65px;
+                font-size: 1.6rem;
+            }
+            
+            .key-section, .portal-section {
+                padding: 20px;
+            }
+        }
+        
+        /* 超大屏幕样式 */
+        @media (min-width: 1400px) {
+            .container {
+                max-width: 1400px;
             }
         }
     </style>
@@ -764,18 +768,19 @@
                 </div>
                 <nav>
                     <ul id="nav-menu">
-                        <li><a href="#" class="active"><i class="fas fa-eye"></i> 洞察</a></li>
-                        <li><a href="#"><i class="fas fa-book"></i> 典籍</a></li>
-                        <li><a href="#"><i class="fas fa-compass"></i> 探索</a></li>
-                        <li><a href="#"><i class="fas fa-key"></i> 秘钥</a></li>
-                        <li><a href="#"><i class="fas fa-door-open"></i> 门户</a></li>
+                        <li><a href="#insight-section" class="active"><i class="fas fa-eye"></i> 洞察</a></li>
+                        <li><a href="#archives-section"><i class="fas fa-book"></i> 典籍</a></li>
+                        <li><a href="#explore-section"><i class="fas fa-compass"></i> 探索</a></li>
+                        <li><a href="#key-section"><i class="fas fa-key"></i> 秘钥</a></li>
+                        <li><a href="#portal-section"><i class="fas fa-door-open"></i> 门户</a></li>
                     </ul>
                 </nav>
             </div>
         </header>
         
         <main>
-            <div class="main-content">
+            <!-- 洞察部分 -->
+            <div class="main-content" id="insight-section">
                 <div class="card">
                     <h2>古老知识</h2>
                     <p>在时间诞生之前，在空间尚未延展之时，那些被遗忘的真理沉睡于意识无法触及的深渊。只有最无畏的探索者才敢窥视这些禁忌的知识。</p>
@@ -793,7 +798,8 @@
                     </div>
                 </div>
                 
-                <div class="card">
+                <!-- 典籍部分 -->
+                <div class="card" id="archives-section">
                     <h2>现实裂缝</h2>
                     <p>我们的世界并非如表面般坚固。在特定地点、特定时间，现实的结构会变得薄弱，允许来自其他维度的回声渗入。</p>
                     <p>这些裂缝可能表现为无法解释的现象：几何错乱的空间、违背物理定律的事件、或短暂出现的异常实体。</p>
@@ -811,7 +817,8 @@
                 </div>
             </div>
             
-            <div class="timeline-section">
+            <!-- 探索部分 -->
+            <div class="timeline-section" id="explore-section">
                 <h2 class="section-title">神秘纪年</h2>
                 
                 <div class="timeline">
@@ -856,15 +863,109 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- 秘钥部分 -->
+            <div class="key-section" id="key-section">
+                <h2 class="section-title">维度秘钥</h2>
+                <p>这些神秘的钥匙是通往其他维度的门户。每把钥匙都对应一个特定的现实层面，只有掌握正确钥匙的人才能穿越维度边界。</p>
+                
+                <div class="key-grid">
+                    <div class="key-item">
+                        <div class="key-icon">🔑</div>
+                        <h3 class="key-title">时间之钥</h3>
+                        <p class="key-desc">这把钥匙能够解锁时间的流动，让持有者穿越不同的时间线。</p>
+                    </div>
+                    
+                    <div class="key-item">
+                        <div class="key-icon">🗝️</div>
+                        <h3 class="key-title">虚空之钥</h3>
+                        <p class="key-desc">通往虚无之境的钥匙，打开后可以看到宇宙诞生前的状态。</p>
+                    </div>
+                    
+                    <div class="key-item">
+                        <div class="key-icon">🔐</div>
+                        <h3 class="key-title">记忆之钥</h3>
+                        <p class="key-desc">解锁集体潜意识，访问人类共享的记忆宝库。</p>
+                    </div>
+                    
+                    <div class="key-item">
+                        <div class="key-icon">🔏</div>
+                        <h3 class="key-title">混沌之钥</h3>
+                        <p class="key-desc">打开后释放原始混沌能量，重塑现实结构。</p>
+                    </div>
+                    
+                    <div class="key-item">
+                        <div class="key-icon">🔒</div>
+                        <h3 class="key-title">星界之钥</h3>
+                        <p class="key-desc">连接星辰之间的通道，让持有者在星际间瞬间移动。</p>
+                    </div>
+                    
+                    <div class="key-item">
+                        <div class="key-icon">🔓</div>
+                        <h3 class="key-title">深渊之钥</h3>
+                        <p class="key-desc">打开通往宇宙深渊的门户，那里居住着古老的存在。</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 门户部分 -->
+            <div class="portal-section" id="portal-section">
+                <h2 class="section-title">多维门户</h2>
+                <p>这些神秘的门户连接着不同的现实层面。每个门户都有独特的属性和危险，只有经验丰富的探索者才能安全穿越。</p>
+                
+                <div class="portal-grid">
+                    <div class="portal-item" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80') center/cover;">
+                        <div class="portal-overlay">
+                            <span>进入星界</span>
+                        </div>
+                        <h3 class="portal-title">星界之门</h3>
+                        <p class="portal-desc">通往星辰之间的领域，那里没有物质形态，只有纯粹的意识存在。</p>
+                    </div>
+                    
+                    <div class="portal-item" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1505506874110-6a7a69069a08?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80') center/cover;">
+                        <div class="portal-overlay">
+                            <span>进入深渊</span>
+                        </div>
+                        <h3 class="portal-title">深渊之门</h3>
+                        <p class="portal-desc">通往宇宙最黑暗的角落，那里居住着无法名状的古老存在。</p>
+                    </div>
+                    
+                    <div class="portal-item" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1502134249126-9f3755a50d78?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80') center/cover;">
+                        <div class="portal-overlay">
+                            <span>进入时间流</span>
+                        </div>
+                        <h3 class="portal-title">时间之门</h3>
+                        <p class="portal-desc">连接不同时间线的门户，但每次穿越都会改变现实的结构。</p>
+                    </div>
+                    
+                    <div class="portal-item" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80') center/cover;">
+                        <div class="portal-overlay">
+                            <span>进入梦境</span>
+                        </div>
+                        <h3 class="portal-title">梦境之门</h3>
+                        <p class="portal-desc">通往集体潜意识的入口，那里是所有梦境的源头。</p>
+                    </div>
+                    
+                    <div class="portal-item" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1505506874110-6a7a69069a08?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80') center/cover;">
+                        <div class="portal-overlay">
+                            <span>进入混沌</span>
+                        </div>
+                        <h3 class="portal-title">混沌之门</h3>
+                        <p class="portal-desc">通往原始混沌的入口，那里是现实形成前的状态。</p>
+                    </div>
+                    
+                    <div class="portal-item" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1502134249126-9f3755a50d78?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80') center/cover;">
+                        <div class="portal-overlay">
+                            <span>进入镜像</span>
+                        </div>
+                        <h3 class="portal-title">镜像之门</h3>
+                        <p class="portal-desc">通往平行宇宙的门户，那里的一切都是我们世界的镜像。</p>
+                    </div>
+                </div>
+            </div>
         </main>
         
         <footer>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-discord"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
-            </div>
             <p class="copyright">© 2025 虚空回响 - 探索不可知之境 | 所有知识皆有代价</p>
         </footer>
     </div>
@@ -897,6 +998,23 @@
             }
         });
         
+        // 导航菜单功能
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                // 移除所有active类
+                navLinks.forEach(l => l.classList.remove('active'));
+                
+                // 添加active类到当前链接
+                this.classList.add('active');
+                
+                // 移动端关闭菜单
+                if (window.innerWidth < 768) {
+                    navMenu.classList.remove('show');
+                }
+            });
+        });
+        
         // 符号点击功能
         const symbols = document.querySelectorAll('.symbol');
         const modal = document.getElementById('symbol-modal');
@@ -926,17 +1044,20 @@
                 modalDesc.textContent = descriptions[Math.floor(Math.random() * descriptions.length)];
                 
                 modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden'; // 防止背景滚动
             });
         });
         
         // 关闭模态框
         closeModal.addEventListener('click', function() {
             modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
         });
         
         window.addEventListener('click', function(e) {
             if (e.target === modal) {
                 modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
             }
         });
         
@@ -964,14 +1085,17 @@
             symbol.style.animation = `float ${duration}s ${delay}s infinite linear`;
         });
         
-        // 检测移动设备并显示提示
-        function isMobileDevice() {
-            return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
-        }
-        
-        if (isMobileDevice()) {
-            document.body.classList.add('mobile-device');
-        }
+        // 门户悬停效果
+        const portalItems = document.querySelectorAll('.portal-item');
+        portalItems.forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.03)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
     </script>
 </body>
 </html>
