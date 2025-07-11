@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>虚空之域 - 神秘探索</title>
+    <title>虚空回响 - 2025</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=MedievalSharp&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
@@ -13,9 +13,20 @@
             box-sizing: border-box;
         }
         
+        :root {
+            --dark-bg: linear-gradient(135deg, #0a0a0a 0%, #12082e 50%, #0a0a0a 100%);
+            --gold: #d4af37;
+            --dark-red: #8a0303;
+            --purple: #5e2a84;
+            --teal: #2a7a62;
+            --text-light: #c7c7d1;
+            --text-accent: #a89cc8;
+            --card-bg: rgba(10, 8, 24, 0.7);
+        }
+        
         body {
-            background: linear-gradient(135deg, #0a0a0a 0%, #12082e 50%, #0a0a0a 100%);
-            color: #c7c7d1;
+            background: var(--dark-bg);
+            color: var(--text-light);
             font-family: 'Raleway', sans-serif;
             line-height: 1.6;
             min-height: 100vh;
@@ -45,7 +56,7 @@
             left: 15%;
             width: 120px;
             height: 120px;
-            border: 2px solid #5e2a84;
+            border: 2px solid var(--purple);
             border-radius: 50%;
             animation-duration: 25s;
         }
@@ -55,7 +66,7 @@
             left: 80%;
             width: 80px;
             height: 80px;
-            border: 2px dashed #8a0303;
+            border: 2px dashed var(--dark-red);
             transform: rotate(45deg);
             animation-duration: 20s;
         }
@@ -75,7 +86,7 @@
             left: 85%;
             width: 60px;
             height: 60px;
-            background: radial-gradient(circle, #8a0303, transparent);
+            background: radial-gradient(circle, var(--dark-red), transparent);
             animation-duration: 18s;
         }
         
@@ -84,7 +95,7 @@
             left: 10%;
             width: 100px;
             height: 100px;
-            border: 3px double #2a7a62;
+            border: 3px double var(--teal);
             border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
             animation-duration: 22s;
         }
@@ -106,8 +117,8 @@
         
         .logo {
             font-family: 'Cinzel', serif;
-            font-size: 4.5rem;
-            color: #d4af37;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            color: var(--gold);
             text-shadow: 0 0 10px rgba(212, 175, 55, 0.5), 
                          0 0 20px rgba(138, 3, 3, 0.3),
                          0 0 30px rgba(94, 42, 132, 0.2);
@@ -120,8 +131,8 @@
         
         .subtitle {
             font-family: 'MedievalSharp', cursive;
-            font-size: 1.5rem;
-            color: #a89cc8;
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            color: var(--text-accent);
             letter-spacing: 3px;
             text-transform: uppercase;
             margin-top: -10px;
@@ -135,50 +146,41 @@
             display: flex;
             justify-content: center;
             list-style: none;
-            gap: 30px;
+            gap: 15px;
+            flex-wrap: wrap;
         }
         
         nav a {
-            color: #c7c7d1;
+            color: var(--text-light);
             text-decoration: none;
-            font-size: 1.2rem;
+            font-size: clamp(0.9rem, 2vw, 1.2rem);
             text-transform: uppercase;
             letter-spacing: 2px;
             padding: 8px 15px;
             position: relative;
             transition: all 0.3s ease;
+            border: 1px solid rgba(138, 3, 3, 0.3);
+            border-radius: 4px;
+            background: rgba(20, 15, 40, 0.3);
         }
         
-        nav a:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #d4af37, #8a0303, transparent);
-            transition: width 0.3s ease;
-        }
-        
-        nav a:hover {
-            color: #d4af37;
+        nav a:hover, nav a.active {
+            color: var(--gold);
+            background: rgba(138, 3, 3, 0.2);
+            border-color: var(--gold);
             text-shadow: 0 0 8px rgba(212, 175, 55, 0.7);
-        }
-        
-        nav a:hover:after {
-            width: 100%;
         }
         
         /* 主要内容区 */
         .main-content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
             margin-bottom: 60px;
         }
         
         .card {
-            background: rgba(10, 8, 24, 0.6);
+            background: var(--card-bg);
             border: 1px solid rgba(138, 3, 3, 0.3);
             border-radius: 8px;
             padding: 30px;
@@ -201,12 +203,12 @@
             left: 0;
             width: 100%;
             height: 4px;
-            background: linear-gradient(90deg, #8a0303, #5e2a84, #2a7a62);
+            background: linear-gradient(90deg, var(--dark-red), var(--purple), var(--teal));
         }
         
         .card h2 {
             font-family: 'Cinzel', serif;
-            color: #d4af37;
+            color: var(--gold);
             margin-bottom: 20px;
             font-size: 1.8rem;
             position: relative;
@@ -220,18 +222,19 @@
             left: 0;
             width: 50px;
             height: 2px;
-            background: linear-gradient(90deg, #8a0303, #5e2a84);
+            background: linear-gradient(90deg, var(--dark-red), var(--purple));
         }
         
         .card p {
             margin-bottom: 20px;
-            color: #a89cc8;
+            color: var(--text-accent);
+            font-size: clamp(0.9rem, 2vw, 1rem);
         }
         
         .symbol-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
+            gap: 15px;
             margin-top: 30px;
         }
         
@@ -245,32 +248,17 @@
             align-items: center;
             justify-content: center;
             font-size: 2rem;
-            color: #d4af37;
+            color: var(--gold);
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            cursor: pointer;
         }
         
         .symbol:hover {
             transform: scale(1.1) rotate(5deg);
             box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
-            color: #8a0303;
-        }
-        
-        .symbol:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(212, 175, 55, 0.1), transparent);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .symbol:hover:before {
-            opacity: 1;
+            color: var(--dark-red);
         }
         
         /* 时间线部分 */
@@ -281,8 +269,8 @@
         .section-title {
             text-align: center;
             font-family: 'Cinzel', serif;
-            font-size: 2.5rem;
-            color: #d4af37;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            color: var(--gold);
             margin-bottom: 40px;
             position: relative;
         }
@@ -295,7 +283,7 @@
             transform: translateX(-50%);
             width: 100px;
             height: 3px;
-            background: linear-gradient(90deg, transparent, #8a0303, #5e2a84, transparent);
+            background: linear-gradient(90deg, transparent, var(--dark-red), var(--purple), transparent);
         }
         
         .timeline {
@@ -311,7 +299,7 @@
             bottom: 0;
             left: 50%;
             width: 2px;
-            background: linear-gradient(to bottom, transparent, #5e2a84, #8a0303, transparent);
+            background: linear-gradient(to bottom, transparent, var(--purple), var(--dark-red), transparent);
             margin-left: -1px;
         }
         
@@ -346,8 +334,8 @@
             top: 20px;
             width: 20px;
             height: 20px;
-            background: #5e2a84;
-            border: 3px solid #d4af37;
+            background: var(--purple);
+            border: 3px solid var(--gold);
             border-radius: 50%;
         }
         
@@ -361,8 +349,9 @@
         
         .timeline-content h3 {
             font-family: 'Cinzel', serif;
-            color: #d4af37;
+            color: var(--gold);
             margin-bottom: 10px;
+            font-size: 1.4rem;
         }
         
         /* 页脚 */
@@ -379,6 +368,7 @@
             justify-content: center;
             gap: 25px;
             margin-bottom: 20px;
+            flex-wrap: wrap;
         }
         
         .social-links a {
@@ -389,21 +379,74 @@
             height: 50px;
             border-radius: 50%;
             background: rgba(20, 15, 40, 0.7);
-            color: #d4af37;
+            color: var(--gold);
             font-size: 1.5rem;
             transition: all 0.3s ease;
             border: 1px solid rgba(138, 3, 3, 0.3);
         }
         
         .social-links a:hover {
-            background: #8a0303;
+            background: var(--dark-red);
             transform: translateY(-5px);
             box-shadow: 0 5px 15px rgba(138, 3, 3, 0.4);
         }
         
         .copyright {
-            color: #a89cc8;
+            color: var(--text-accent);
             font-size: 0.9rem;
+        }
+        
+        /* 模态框样式 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: var(--card-bg);
+            border: 2px solid var(--gold);
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            padding: 30px;
+            position: relative;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: var(--gold);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .close-modal:hover {
+            transform: rotate(90deg);
+            color: var(--dark-red);
+        }
+        
+        .modal h2 {
+            color: var(--gold);
+            font-family: 'Cinzel', serif;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .modal p {
+            color: var(--text-accent);
+            margin-bottom: 20px;
+            line-height: 1.8;
         }
         
         /* 动画效果 */
@@ -435,17 +478,17 @@
         
         /* 响应式设计 */
         @media (max-width: 768px) {
-            .main-content {
-                grid-template-columns: 1fr;
-            }
-            
             .logo {
-                font-size: 3rem;
+                letter-spacing: 4px;
             }
             
             nav ul {
-                flex-direction: column;
-                gap: 10px;
+                gap: 8px;
+            }
+            
+            nav a {
+                padding: 6px 10px;
+                font-size: 0.85rem;
             }
             
             .timeline:before {
@@ -469,6 +512,76 @@
             .timeline-item:nth-child(even) .timeline-content:before {
                 left: 10px;
             }
+            
+            .symbol-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .symbol {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .symbol-grid {
+                grid-template-columns: repeat(2, 1fr);
+                justify-items: center;
+            }
+            
+            .symbol {
+                width: 70px;
+                height: 70px;
+            }
+        }
+        
+        /* 2025新特性 */
+        .glitch-text {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .glitch-text::before,
+        .glitch-text::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .glitch-text::before {
+            left: 2px;
+            text-shadow: -2px 0 var(--purple);
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim 5s infinite linear alternate-reverse;
+        }
+        
+        .glitch-text::after {
+            left: -2px;
+            text-shadow: -2px 0 var(--teal);
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim2 5s infinite linear alternate-reverse;
+        }
+        
+        @keyframes glitch-anim {
+            0% { clip: rect(77px, 9999px, 36px, 0); }
+            20% { clip: rect(73px, 9999px, 74px, 0); }
+            40% { clip: rect(45px, 9999px, 66px, 0); }
+            60% { clip: rect(27px, 9999px, 87px, 0); }
+            80% { clip: rect(77px, 9999px, 15px, 0); }
+            100% { clip: rect(77px, 9999px, 99px, 0); }
+        }
+        
+        @keyframes glitch-anim2 {
+            0% { clip: rect(31px, 9999px, 40px, 0); }
+            20% { clip: rect(11px, 9999px, 45px, 0); }
+            40% { clip: rect(82px, 9999px, 29px, 0); }
+            60% { clip: rect(10px, 9999px, 73px, 0); }
+            80% { clip: rect(66px, 9999px, 47px, 0); }
+            100% { clip: rect(91px, 9999px, 10px, 0); }
         }
     </style>
 </head>
@@ -484,17 +597,19 @@
     
     <div class="container">
         <header>
-            <h1 class="logo">虚空之域</h1>
-            <p class="subtitle">探索不可名状的奥秘</p>
+            <h1 class="logo">
+                <span class="glitch-text" data-text="虚空回响">虚空回响</span>
+            </h1>
+            <p class="subtitle">探索2025年的未知维度</p>
             
             <div class="nav-container">
                 <nav>
                     <ul>
-                        <li><a href="#"><i class="fas fa-eye"></i> 洞察</a></li>
-                        <li><a href="#"><i class="fas fa-book"></i> 典籍</a></li>
-                        <li><a href="#"><i class="fas fa-compass"></i> 探索</a></li>
-                        <li><a href="#"><i class="fas fa-key"></i> 秘钥</a></li>
-                        <li><a href="#"><i class="fas fa-door-open"></i> 门户</a></li>
+                        <li><a href="#" class="active" id="nav-insight"><i class="fas fa-eye"></i> 洞察</a></li>
+                        <li><a href="#" id="nav-archives"><i class="fas fa-book"></i> 典籍</a></li>
+                        <li><a href="#" id="nav-explore"><i class="fas fa-compass"></i> 探索</a></li>
+                        <li><a href="#" id="nav-key"><i class="fas fa-key"></i> 秘钥</a></li>
+                        <li><a href="#" id="nav-portal"><i class="fas fa-door-open"></i> 门户</a></li>
                     </ul>
                 </nav>
             </div>
@@ -502,42 +617,42 @@
         
         <main>
             <div class="main-content">
-                <div class="card">
+                <div class="card" id="insight-section">
                     <h2>古老知识</h2>
                     <p>在时间诞生之前，在空间尚未延展之时，那些被遗忘的真理沉睡于意识无法触及的深渊。只有最无畏的探索者才敢窥视这些禁忌的知识。</p>
                     <p>宇宙的构造远比我们所知的复杂，现实不过是无数层面中脆弱的一层。当帷幕被揭开，心智将直面无法理解的真相。</p>
                     
                     <div class="symbol-grid">
-                        <div class="symbol">⌖</div>
-                        <div class="symbol">⌇</div>
-                        <div class="symbol">⍟</div>
-                        <div class="symbol">⎊</div>
-                        <div class="symbol">⍜</div>
-                        <div class="symbol">⎔</div>
-                        <div class="symbol">⍣</div>
-                        <div class="symbol">⍗</div>
+                        <div class="symbol" data-info="扭曲之门">⌖</div>
+                        <div class="symbol" data-info="时间裂痕">⌇</div>
+                        <div class="symbol" data-info="星界之眼">⍟</div>
+                        <div class="symbol" data-info="深渊印记">⎊</div>
+                        <div class="symbol" data-info="虚空回响">⍜</div>
+                        <div class="symbol" data-info="遗忘符文">⎔</div>
+                        <div class="symbol" data-info="永恒三角">⍣</div>
+                        <div class="symbol" data-info="维度之钥">⍗</div>
                     </div>
                 </div>
                 
-                <div class="card">
+                <div class="card" id="archives-section">
                     <h2>现实裂缝</h2>
                     <p>我们的世界并非如表面般坚固。在特定地点、特定时间，现实的结构会变得薄弱，允许来自其他维度的回声渗入。</p>
                     <p>这些裂缝可能表现为无法解释的现象：几何错乱的空间、违背物理定律的事件、或短暂出现的异常实体。</p>
                     
                     <div class="symbol-grid">
-                        <div class="symbol">⍊</div>
-                        <div class="symbol">⌲</div>
-                        <div class="symbol">⍋</div>
-                        <div class="symbol">⍎</div>
-                        <div class="symbol">⌗</div>
-                        <div class="symbol">⌬</div>
-                        <div class="symbol">⎌</div>
-                        <div class="symbol">⍞</div>
+                        <div class="symbol" data-info="量子漩涡">⍊</div>
+                        <div class="symbol" data-info="熵之牢笼">⌲</div>
+                        <div class="symbol" data-info="混沌之眼">⍋</div>
+                        <div class="symbol" data-info="虚空矩阵">⍎</div>
+                        <div class="symbol" data-info="维度锚点">⌗</div>
+                        <div class="symbol" data-info="时间碎片">⌬</div>
+                        <div class="symbol" data-info="现实织网">⎌</div>
+                        <div class="symbol" data-info="永恒回廊">⍞</div>
                     </div>
                 </div>
             </div>
             
-            <div class="timeline-section">
+            <div class="timeline-section" id="explore-section">
                 <h2 class="section-title">神秘纪年</h2>
                 
                 <div class="timeline">
@@ -545,6 +660,7 @@
                         <div class="timeline-content">
                             <h3>远古纪元</h3>
                             <p>在人类文明诞生之前，古老的实体在星辰间漫步。它们留下的遗迹至今仍埋藏在深海与地底深处。</p>
+                            <button class="reveal-btn" data-year="远古纪元">揭示秘密</button>
                         </div>
                     </div>
                     
@@ -552,6 +668,7 @@
                         <div class="timeline-content">
                             <h3>知识觉醒</h3>
                             <p>公元前3000年，最早的秘教在美索不达米亚形成。他们通过梦境接触到了超越人类理解的知识。</p>
+                            <button class="reveal-btn" data-year="知识觉醒">揭示秘密</button>
                         </div>
                     </div>
                     
@@ -559,6 +676,7 @@
                         <div class="timeline-content">
                             <h3>大封锁</h3>
                             <p>中世纪时期，教会全力压制异端知识。许多珍贵手稿被焚毁，但部分被秘密保存在地下图书馆。</p>
+                            <button class="reveal-btn" data-year="大封锁">揭示秘密</button>
                         </div>
                     </div>
                     
@@ -566,6 +684,15 @@
                         <div class="timeline-content">
                             <h3>现代探索</h3>
                             <p>20世纪初，技术进步使人类得以探测深海与太空，重新发现了被遗忘的真相。新的秘密组织在全球形成。</p>
+                            <button class="reveal-btn" data-year="现代探索">揭示秘密</button>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <h3>2025年突破</h3>
+                            <p>量子计算与神经接口的进步让我们得以窥探多维现实。人类首次有意识地观测到了现实裂缝。</p>
+                            <button class="reveal-btn" data-year="2025年突破">揭示秘密</button>
                         </div>
                     </div>
                 </div>
@@ -579,11 +706,103 @@
                 <a href="#"><i class="fab fa-twitter"></i></a>
                 <a href="#"><i class="fab fa-youtube"></i></a>
             </div>
-            <p class="copyright">© 2023 虚空之域 - 探索不可知之境 | 所有知识皆有代价</p>
+            <p class="copyright">© 2025 虚空回响 - 探索不可知之境 | 所有知识皆有代价</p>
         </footer>
     </div>
     
+    <!-- 模态框 -->
+    <div class="modal" id="symbol-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="modal-title">符号信息</h2>
+            <p id="modal-description">符号的详细信息将在这里显示...</p>
+            <div class="symbol-display">
+                <div class="symbol-large" id="modal-symbol">⌖</div>
+            </div>
+        </div>
+    </div>
+    
     <script>
+        // 导航菜单功能
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // 移除所有active类
+                navLinks.forEach(l => l.classList.remove('active'));
+                
+                // 添加active类到当前链接
+                this.classList.add('active');
+                
+                // 根据ID滚动到对应部分
+                const targetId = this.id.replace('nav-', '') + '-section';
+                document.getElementById(targetId).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // 符号点击功能
+        const symbols = document.querySelectorAll('.symbol');
+        const modal = document.getElementById('symbol-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDesc = document.getElementById('modal-description');
+        const modalSymbol = document.getElementById('modal-symbol');
+        const closeModal = document.querySelector('.close-modal');
+        
+        symbols.forEach(symbol => {
+            symbol.addEventListener('click', function() {
+                const symbolInfo = this.getAttribute('data-info');
+                const symbolChar = this.textContent;
+                
+                modalTitle.textContent = symbolInfo;
+                modalSymbol.textContent = symbolChar;
+                
+                // 生成随机描述
+                const descriptions = [
+                    `这个符号代表了${symbolInfo}，是古代文明用于沟通多维现实的工具。`,
+                    `${symbolInfo}是现实结构中的关键节点，能够扭曲空间和时间。`,
+                    `在2025年的研究中，学者们发现${symbolInfo}与量子纠缠现象有直接关联。`,
+                    `这个神秘的符号最早出现在公元前3000年的石板上，至今仍未被完全破译。`,
+                    `现代科学证实${symbolInfo}实际上是一种高维几何结构在三维空间的投影。`,
+                    `使用者报告称凝视${symbolInfo}会导致短暂的时空感知异常。`
+                ];
+                
+                modalDesc.textContent = descriptions[Math.floor(Math.random() * descriptions.length)];
+                
+                modal.style.display = 'flex';
+            });
+        });
+        
+        // 关闭模态框
+        closeModal.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+        
+        window.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+        
+        // 揭示秘密按钮功能
+        const revealBtns = document.querySelectorAll('.reveal-btn');
+        revealBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const year = this.getAttribute('data-year');
+                const secrets = {
+                    "远古纪元": "最新考古发现表明，远古实体使用声波共振在行星核心创造了能量网络。",
+                    "知识觉醒": "美索不达米亚祭司使用的仪式实际上是原始的量子纠缠实验。",
+                    "大封锁": "被焚毁的手稿中包含如何利用地球磁场进行跨维度旅行的知识。",
+                    "现代探索": "1926年南极探险发现的冰下金字塔是远古文明的维度稳定装置。",
+                    "2025年突破": "CERN在2025年实验中意外创造了持续时间达0.3秒的稳定虫洞。"
+                };
+                
+                alert(`【${year}的秘密】\n\n${secrets[year]}`);
+            });
+        });
+        
         // 为符号添加随机动画
         document.querySelectorAll('.symbol').forEach(symbol => {
             const duration = 10 + Math.random() * 20;
